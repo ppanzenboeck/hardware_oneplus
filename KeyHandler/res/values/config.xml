@@ -10,5 +10,5 @@
     <item name="alert_slider_dialog_y" type="fraction">25%</item>
 
     <!-- This defines by what factor the dialog should be offset. -->
-    <item name="alert_slider_mode_offset_y" type="fraction">150%</item>
+    <item name="alert_slider_mode_offset_y" type="fraction">50%</item>
 </resources>
