@@ -140,9 +140,9 @@
              vibrateIfNeeded(mode)
              sendNotification(position, mode, display)
          }
-     }
+    }
 
-     private fun sendNotification(position: Int, mode: Int, display: Int) {
+    private fun sendNotification(position: Int, mode: Int, display: Int) {
         sendBroadcast(Intent(CHANGED_ACTION).apply {
             putExtra("position", position)
             putExtra("mode", mode)
