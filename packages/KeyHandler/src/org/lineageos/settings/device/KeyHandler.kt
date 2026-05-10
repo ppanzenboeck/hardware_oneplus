@@ -149,8 +149,10 @@ class KeyHandler : Service() {
         notificationManager.setZenMode(zenMode, null, TAG)
 
         // Wait until zen mode change is committed
-        while (notificationManager.zenMode != zenMode) {
-            Thread.sleep(10)
+        var remainingAttempts = ZEN_RETRY_MAX
+        while (notificationManager.zenMode != zenMode && remainingAttempts > 0) {
+            Thread.sleep(ZEN_RETRY_TIMEOUT)
+            remainingAttempts--
         }
     }
 
@@ -184,6 +186,8 @@ class KeyHandler : Service() {
         private const val INVERT_COLORS = "config_invert_colors"
 
         // ZEN constants
+        private const val ZEN_RETRY_TIMEOUT = 10L // ms
+        private const val ZEN_RETRY_MAX = 50 // attempts
         private const val ZEN_OFFSET = 2
         const val ZEN_PRIORITY_ONLY = 3
         const val ZEN_TOTAL_SILENCE = 4
